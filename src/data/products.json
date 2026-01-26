@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Intel Core i9-13900K",
+    "type": "CPU",
+    "price": 520,
+    "image": "https://jesistem.com/wp-content/uploads/2024/10/i9-kf-600x600.webp"
+  },
+  {
+    "name": "AMD Ryzen 7 5800X",
+    "type": "CPU",
+    "price": 360,
+    "image": "https://media.game.es/COVERV2/3D_L/V0Q/V0QEYX.png"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4080",
+    "type": "GPU",
+    "price": 1200,
+    "image": "https://asset.msi.com/resize/image/global/product/product_1668045190e4886ef46b13298d252099c73e055ae6.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"
+  },
+  {
+    "name": "Corsair Vengeance RGB Pro 32GB",
+    "type": "RAM",
+    "price": 150,
+    "image": "https://assets.corsair.com/image/upload/c_pad,q_85,h_1100,w_1100,f_auto/products/Memory/CMW32GX4M2E3200C16/Gallery/Vengeance_RGB_Pro_01.webp"
+  },
+  {
+    "name": "Samsung 980 Pro 1TB",
+    "type": "SSD",
+    "price": 180,
+    "image": "https://media.flixcar.com/webp/synd-asset/Samsung-93773792-es-980-pro-nvme-m2-ssd-mz-v8p1t0bw-503502634Download-Source-zoom.png"
+  },
+  {
+    "name": "ASUS ROG Strix Z690-E",
+    "type": "Motherboard",
+    "price": 420,
+    "image": "https://dlcdnwebimgs.asus.com/files/media/F06BD967-FC83-4514-8AC4-760944D051CC/v1/img/performance/header-pd.png"
+  },
+    {
+    "name": "AMD Radeon RX 7900 XT",
+    "type": "GPU",
+    "price": 900,
+    "image": "https://pg.asrock.com/Graphics-Card/photo/Radeon%20RX%207900%20XT%20Phantom%20Gaming%2020GB%20OC(L1).png"
+  },
+  {
+    "name": "Kingston Fury Beast 16GB",
+    "type": "RAM",
+    "price": 85,
+    "image": "https://media.lifeinformatica.com/contents/assets/MEKIN394/imgs/KF432C16BB1_16-03.png"
+  },
+  {
+    "name": "Western Digital Black SN850X 1TB",
+    "type": "SSD",
+    "price": 170,
+    "image": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MP_123157664/fee_786_587_png"
+  },
+  {
+    "name": "Logitech G Pro X Superlight",
+    "type": "Mouse",
+    "price": 160,
+    "image": "https://tauretcomputadores.com/images/products/Product_20240628115338799375044.ARTE_LOGITECH.webp"
+  }
+]

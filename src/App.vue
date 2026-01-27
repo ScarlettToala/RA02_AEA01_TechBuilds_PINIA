@@ -1,11 +1,23 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useHardwareStore } from '@/stores/useHardwareStore'
+import { useUserSessionStore } from '@/stores/useUserSessionStore'
+
+const hardwareStore = useHardwareStore()
+
+onMounted(() => {
+  hardwareStore.loadHardware()
+})
+
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div v-if="hardwareStore.loading">Cargando...</div>
+
+  <div v-else>
+    <div v-for="item in hardwareStore.hardware" :key="item.id">
+      {{ item.name }} - {{ item.price }} €
+    </div>
+  </div>
 </template>
 
-<style scoped></style>

@@ -19,6 +19,7 @@ export const useHardwareStore = defineStore('hardwareStore', () =>{
         //Importa dinámicamente el json devolviendo una promesa
         const data = await import('@/data/hardware.json')
         hardware.value = data.default
+        
         // data.default recibe un array con los objetos del jsonpero se ve de etsa forma {default:[{producto},{producto},...]}
         loading.value = false //Vuelve al estado inicial
     }

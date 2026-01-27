@@ -1,3 +1,0 @@
-<script setup>
-import 
-</script>

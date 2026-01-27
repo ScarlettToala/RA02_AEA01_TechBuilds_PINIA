@@ -3,7 +3,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useUserStore = defineStore('userStore', () => {
+export const useUserSessionStore = defineStore('userStore', () => {
     //dato que pudiera cambiar y vue debe tenerlo en cuenta
     //Si mañana cambiase el nombre de usuario, vue debe actualizar la vista userName.value = "María" cmabia en todos los sitios donde se use
 

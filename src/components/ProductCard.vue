@@ -1,38 +1,33 @@
 <script setup>
-// imports
-import { ref } from "vue";
 import AppButton from "./AppButton.vue";
-// import AppCountInput from "./AppCountInput.vue"; //este es un coponente hijo
 
-// props es el producto que le pasa el padre 
-const props = defineProps({
-    product: Object
+defineProps({
+  product: Object
 });
 
-// emits Esta es la definición paa poner el @ es el listener solo avisa no añade al carrito. 
-defineEmits(["addToCart"])
-
-// data
-const count = ref(0);
+defineEmits(["addToCart"]);
 </script>
 
 <template>
-    <li class="card">
-        <img :src=product.image :alt="`Product image ${product.name}`" />
+  <li class="card">
+    <img :src="product.image" :alt="product.name" />
 
+    <h3 class="type">{{ product.type }}</h3>
 
-        <h3 class="type">{{ product.type }}</h3>
+    <p class="name">
+      {{ product.name }}
+      <span class="price">${{ product.price }}</span>
+    </p>
 
-        <p class="name">
-            {{ product.name }}
-            <span class="price">${{ product.price }}</span>
-        </p>
-
-        <AppButton class="primary" @click="$emit('addToCart', count), (count = 0)">
-            Add to Cart
-        </AppButton>
-    </li>
+    <AppButton
+      class="primary"
+      @click="$emit('addToCart', 1)"
+    >
+      Add to Cart
+    </AppButton>
+  </li>
 </template>
+
 
 <style scoped>
 .card {

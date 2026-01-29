@@ -1,23 +1,24 @@
 <script setup>
 // imports
 import { ref } from "vue";
-import LocalStoreItem from "./LocalStoreItem.vue";
-import { useLocalStorage } from "@/stores/useLocalStorage"; //estado global 
+import CartItem from "./CartItem.vue";
+import { useBuildStore } from "@/stores/useBuildStore.js"; //estado global 
 import AppModalOverlay from "./AppModalOverlay.vue";
 import AppButton from "@/components/AppButton.vue"
+
 // data
 const active = ref(false); //estado de abierto o cerrado
-const localStore = useLocalStorage(); //Concetar al store
+const localStore = useBuildStore(); //Concetar al store
+
 </script>
 
 <template>
   <div class="relative">
     <!-- Icon that always shows -->
-    <span @click="active = true">
-      Icono de compra
-
-      <!-- Lee el estado global y reactivo automaticmanete. -->
-      <div class="cart-count">{{ localStore.cantidad }}</div>
+    <span @click="active = true" id="carrito">
+        <span class="material-icons">shopping_cart</span>
+         <!-- Lee el estado global y reactivo automaticmanete. -->
+        <div class="cart-count">{{ localStore.cantidad }}</div>
     </span>
     <!-- Modal Overlay only shows when cart is clicked on, controla el modal desde fuera -->
 
@@ -28,13 +29,13 @@ const localStore = useLocalStorage(); //Concetar al store
       <div v-if="!localStore.isEmpty">
         <ul class="items-in-cart">
           <!-- grouped viene el store CartItem (no toca el estore solo emite eventos-)  -->
-          <LocalStoreItem 
+          <CartItem 
             v-for="(items, name) in localStore.grouper" 
             :key="name" 
             :product="items[0]"
             :count="items.length" 
             @updateCount="localStore.setItemCount(items[0], $event)"
-            @clear="localStore.clearItem(name)" />
+            @clear="localStore.clearItem(name)"/>
             Producto en local store
         </ul>
         <div>
@@ -55,6 +56,32 @@ const localStore = useLocalStorage(); //Concetar al store
 </template>
 
 <style  scoped>
+
+.cart-count{
+  background: red;
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;   
+
+  display: flex;      
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+#carrito{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: right;
+  cursor: pointer;
+}
+
+
 .items-in-cart {
   margin-bottom: 1rem;
 }

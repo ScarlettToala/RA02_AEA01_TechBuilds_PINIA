@@ -2,11 +2,12 @@
 import NavBar from '@/components/NavBar.vue'
 import { onMounted } from 'vue'
 import { useHardwareStore } from '@/stores/UseHardwareStore.js'
-import  LocalStore  from '@/components/LocalStore.vue'
+import  CartStore  from '@/components/CartWidget.vue'
 import { storeToRefs } from 'pinia'
 
 import ProductCard from '@/components/ProductCard.vue'
-import { useLocalStorage } from './stores/useLocalStorage'
+
+import { useBuildStore } from './stores/useBuildStore.js'
 
 
 const hardwareStore = useHardwareStore()
@@ -16,14 +17,14 @@ onMounted(() => {
   hardwareStore.loadHardware()
 })
 
-const localStore = useLocalStorage()
+const cartStore = useBuildStore()
 
 </script>
 
 <template>
   <header>
   <NavBar/>
-  <LocalStore/>
+  <CartStore/>
   </header>
 
   <div v-if="hardwareStore.loading">Cargando...</div>
@@ -33,7 +34,7 @@ const localStore = useLocalStorage()
         v-for = "product in hardwareStore.hardware"
         :key = "product.name"
         :product = "product"
-        @addToCart = localStore.add($event,product)
+        @addToCart ="cartStore.add($event, product)"
     /> 
   </div>
 

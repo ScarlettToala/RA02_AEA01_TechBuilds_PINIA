@@ -1,11 +1,12 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { groupBy } from 'lodash' //Agrupa lso productos por el nombre 
+import { useLocalStorage } from '@vueuse/core'
+import { groupBy } from 'lodash'
+import {ref, computed} from 'vue'
 
-//Store del carrito
-export const useLocalStorage = defineStore('cartStore', () => {
 
-    const items = ref([])
+export const useBuildStore = defineStore('build', () => {
+
+    const items = useLocalStorage("arrayCart", [])
 
     /*===== G E T T E R S=====*/
 
@@ -42,10 +43,6 @@ export const useLocalStorage = defineStore('cartStore', () => {
             items.value.push(item)
         }
     }
-
-    /*function cantidad(){
-            return items.value.length
-        }*/
 
     //Vaciar carrito, $reset es un nombre especial de Pinia
     function $reset() {

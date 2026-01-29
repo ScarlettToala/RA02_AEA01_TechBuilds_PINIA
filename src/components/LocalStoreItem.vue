@@ -1,4 +1,5 @@
 <script setup>
+import AppCountInput from "@/components/AppCountInput.vue";
 //Recibe los datos, cambias cantidad de productos o eliminar producto
 defineProps({
   product: { type: Object, required: true },

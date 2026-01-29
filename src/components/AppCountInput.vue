@@ -11,8 +11,7 @@ const emit = defineEmits(["update:modelValue", "input"]);
 
 //Función que recibe un valor, Si el valor no esta vacio emite el evento, esto cuasa la actualización en el componente padre.
 const updateValue = (value) => {
-  if (value !== "")
-    emit("update:modelValue", value)
+  emit("update:modelValue", value)
 };
 
 </script>
@@ -20,7 +19,7 @@ const updateValue = (value) => {
   <span>
   <!-- Al hacer click resta sino es un null y evita numeros (-) -->
     <button 
-      @click="updateValue(modelValue > 0 ? modelValue - 1 : null)">
+      @click="updateValue(modelValue > 0 ? modelValue - 1 : 0)">
       -
     </button>
     

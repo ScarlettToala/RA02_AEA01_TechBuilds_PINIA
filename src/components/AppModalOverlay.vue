@@ -1,43 +1,46 @@
 <script setup>
-// Controla desde fuera reutilizable
 defineProps({
-  active: { type: Boolean, default: false },
+  active: Boolean,
 });
-
 defineEmits(["close"]);
-
 </script>
 
 <template>
-<!--El padre manda-->
-  <div v-if="active" >
-    <div @click="$emit('close')"></div>
-    <div>
-      <span class="close" @click="$emit('close')">
-        Icono Cerrar ventana
-      </span>
-      <!--Contenido dinamico-->
-      <slot></slot>
+  <div v-if="active">
+    <!-- Fondo oscuro -->
+    <div class="overlay" @click="$emit('close')"></div>
+
+    <!-- Carrito -->
+    <div class="modal">
+      <button class="close" @click="$emit('close')">X</button>
+      <slot />
     </div>
   </div>
 </template>
 
-<style lang="pcss" scoped>
-.close{
-  @apply absolute top-2 right-2;
+<style scoped>
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10;
 }
-.modal-overlay-bg{
-  @apply fixed top-0 left-0 right-0 bottom-0 bg-gray-900 opacity-80;
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background: white;
+  padding: 16px;
+  z-index: 11;
+  overflow-y: auto;
 }
-.modal-overlay-content{
-  @apply fixed bg-white p-10 w-4/5 rounded;
-  top: 50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-}
-@media (min-width: 800px){
-  .modal-overlay-content{
-    width:600px !important;
-  }
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 </style>

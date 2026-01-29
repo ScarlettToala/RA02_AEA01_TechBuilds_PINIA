@@ -2,16 +2,21 @@
 import NavBar from '@/components/NavBar.vue'
 import { onMounted } from 'vue'
 import { useHardwareStore } from '@/stores/UseHardwareStore.js'
-import { LocalStore } from '@/components/LocalStore.vue'
+import  LocalStore  from '@/components/LocalStore.vue'
 import { storeToRefs } from 'pinia'
 
 import ProductCard from '@/components/ProductCard.vue'
+import { useLocalStorage } from './stores/useLocalStorage'
+
 
 const hardwareStore = useHardwareStore()
+
 
 onMounted(() => {
   hardwareStore.loadHardware()
 })
+
+const localStore = useLocalStorage()
 
 </script>
 
@@ -28,7 +33,7 @@ onMounted(() => {
         v-for = "product in hardwareStore.hardware"
         :key = "product.name"
         :product = "product"
-        @addToCart = cartStore.add($event,product)
+        @addToCart = localStore.add($event,product)
     /> 
   </div>
 

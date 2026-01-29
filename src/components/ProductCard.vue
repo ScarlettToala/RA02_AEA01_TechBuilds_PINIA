@@ -6,7 +6,7 @@ import AppButton from "./AppButton.vue";
 
 // props es el producto que le pasa el padre 
 const props = defineProps({
-    product: Object,
+    product: Object
 });
 
 // emits Esta es la definición paa poner el @ es el listener solo avisa no añade al carrito. 

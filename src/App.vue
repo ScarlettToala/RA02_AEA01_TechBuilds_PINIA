@@ -42,7 +42,7 @@ const cartStore = useBuildStore()
 
 <style scoped>
 *{
- background: rgb(240, 227, 117); 
+ background: rgb(239, 203, 84); 
 }
 
 header{

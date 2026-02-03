@@ -19,6 +19,7 @@ defineEmits(["close"]);
 </template>
 
 <style scoped>
+
 .overlay {
   position: fixed;
   inset: 0;

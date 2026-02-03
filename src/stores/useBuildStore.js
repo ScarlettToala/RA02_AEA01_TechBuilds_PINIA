@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 import { groupBy } from 'lodash'
-import {ref, computed} from 'vue'
+import { ref, computed } from 'vue'
 
 
 export const useBuildStore = defineStore('build', () => {
@@ -16,16 +16,30 @@ export const useBuildStore = defineStore('build', () => {
     //Es un boolenao para saber si el carrito esta vacio 
     const isEmpty = computed(() => cantidad.value === 0)
 
-    //Agrupar productos por el nombre
-    const grouper = computed(() => {
-        const gruper = groupBy(items.value, (item) => item.name)
+    //Borrar pro name +typr 
+    const clearItemByNameAndType = (name, type) => {
+        items.value = items.value.filter(
+            item => !(item.name === name && item.type === type)
+        )
+    }
+
+
+    //Agrupar productos por el type
+    const groupedByTypeAndName = computed(() => {
+
+        const byType = groupBy(items.value, (item) => item.type)
+
+        //Dentro de cada typo agrupamos por el nombre
+        Object.keys(byType).forEach(type => {
+            byType[type] = groupBy(byType[type], item => item.name)
+        })
 
         //Ordenas alfabéticamente los nombres
-        const sorted = Object.keys(gruper).sort()
+        const sorted = Object.keys(byType).sort()
 
         //Devuelves el objeto ordenado
         let inOrder = {}
-        sorted.forEach((key) => (inOrder[key] = gruper[key]))
+        sorted.forEach((key) => (inOrder[key] = byType[key]))
 
         return inOrder
     })
@@ -58,5 +72,30 @@ export const useBuildStore = defineStore('build', () => {
         add(count, item)
     }
 
-    return { items, add, cantidad, isEmpty, grouper, $reset, total, clearItem, setItemCount };
+    //Simular el check out
+    function checkout() {
+        //Comprobamos que existe algo
+        if (items.value.length === 0) {
+            alert("El carrito está vacío")
+            return
+        }
+
+        // Simular pedido
+        const order = {
+            id: Date.now(),
+            items: items.value,
+            total: total.value,
+            date: new Date().toISOString(),
+        }
+
+        console.log("Pedido enviado:", order)
+
+        // Simula delay de API
+        setTimeout(() => {
+            alert("Compra realizada con éxito 🎉")
+            items.value = [] // vaciar carrito
+        }, 800)
+    }
+
+    return { items, add, cantidad, isEmpty, groupedByTypeAndName, $reset, total, clearItem, setItemCount, checkout, clearItemByNameAndType };
 })

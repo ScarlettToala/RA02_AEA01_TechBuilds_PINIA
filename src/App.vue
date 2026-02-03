@@ -2,7 +2,7 @@
 import NavBar from '@/components/NavBar.vue'
 import { onMounted } from 'vue'
 import { useHardwareStore } from '@/stores/UseHardwareStore.js'
-import  CartStore  from '@/components/CartWidget.vue'
+import  CartStore  from '@/components/CurrentBuildWidget.vue'
 import { storeToRefs } from 'pinia'
 
 import ProductCard from '@/components/ProductCard.vue'
